@@ -1,0 +1,16 @@
+
+tolerance 2.0
+
+# The file type of input and output files is PDB
+filetype pdb
+
+# The name of the output file
+output system.pdb
+
+# The system components
+
+structure pdb-files/DMF.pdb
+  number 10
+  inside box 0. 0. 0. 30 30 30 
+end structure
+    

@@ -1,0 +1,119 @@
+EtOH {
+
+  ### LAMMPS commands for initialization
+  ### (These can be overridden later.)
+
+
+  write_once("In Init") {
+    atom_style full
+    units real
+    bond_style harmonic
+    angle_style harmonic
+    dihedral_style opls
+    improper_style harmonic
+    pair_style lj/cut/coul/long 11.0 11.0
+    pair_modify mix arithmetic
+    special_bonds lj/coul 0.0 0.0 0.5
+    kspace_style pppm 0.0001
+  }
+
+  write_once("In Settings") {
+    pair_coeff @atom:opls_135 @atom:opls_135 0.06600 3.50000
+    pair_coeff @atom:opls_140 @atom:opls_140 0.03000 2.50000
+    pair_coeff @atom:opls_154 @atom:opls_154 0.17000 3.12000
+    pair_coeff @atom:opls_155 @atom:opls_155 0.00000 10.00000
+    pair_coeff @atom:opls_157 @atom:opls_157 0.06600 3.50000
+  }
+
+  write_once("In Settings") {
+    bond_coeff @bond:type1 340.0 1.09
+    bond_coeff @bond:type2 268.0 1.529
+    bond_coeff @bond:type3 340.0 1.09
+    bond_coeff @bond:type4 553.0 0.945
+    bond_coeff @bond:type5 320.0 1.41
+  }
+
+  write_once("In Settings") {
+    angle_coeff @angle:type1 33.0 107.80000
+    angle_coeff @angle:type2 37.5 110.70000
+    angle_coeff @angle:type3 55.0 108.50000
+    angle_coeff @angle:type4 37.5 110.70000
+    angle_coeff @angle:type5 50.0 109.50000
+    angle_coeff @angle:type6 33.0 107.80000
+    angle_coeff @angle:type7 35.0 109.50000
+  }
+
+  write_once("In Settings") {
+    dihedral_coeff @dihedral:type1 -0.00000 -0.00000 0.30000 -0.00000
+    dihedral_coeff @dihedral:type2 0.00000 -0.00000 0.46800 -0.00000
+    dihedral_coeff @dihedral:type3 -0.35600 -0.17400 0.49200 -0.00000
+    dihedral_coeff @dihedral:type4 0.00000 -0.00000 0.45000 -0.00000
+  }
+
+
+  ### DATA sections
+
+
+  write_once("Data Masses") {
+    @atom:opls_135 12.010780
+    @atom:opls_140 1.007947
+    @atom:opls_154 15.999430
+    @atom:opls_155 1.007947
+    @atom:opls_157 12.010780
+  }
+
+  write("Data Atoms") {
+    $atom:opls_135 $mol:m1 @atom:opls_135 -0.180000 3.451163 17.502854 3.338913
+    $atom:opls_157 $mol:m1 @atom:opls_157 0.145000 3.632969 15.994176 3.226206
+    $atom:opls_154 $mol:m1 @atom:opls_154 -0.683000 4.977852 15.681687 2.985727
+    $atom:opls_140_1 $mol:m1 @atom:opls_140 0.060000 3.793122 17.997701 2.405247
+    $atom:opls_140_2 $mol:m1 @atom:opls_140 0.060000 4.038089 17.894985 4.196356
+    $atom:opls_140_3 $mol:m1 @atom:opls_140 0.060000 2.378312 17.739470 3.500060
+    $atom:opls_140_4 $mol:m1 @atom:opls_140 0.060000 3.021700 15.617250 2.379233
+    $atom:opls_140_5 $mol:m1 @atom:opls_140 0.060000 3.276389 15.497562 4.157053
+    $atom:opls_155 $mol:m1 @atom:opls_155 0.418000 5.451877 15.781623 3.852438
+  }
+
+  write("Data Bonds") {
+    $bond:id1 @bond:type2 $atom:opls_135 $atom:opls_157
+    $bond:id2 @bond:type1 $atom:opls_135 $atom:opls_140_1
+    $bond:id3 @bond:type1 $atom:opls_135 $atom:opls_140_2
+    $bond:id4 @bond:type1 $atom:opls_135 $atom:opls_140_3
+    $bond:id5 @bond:type5 $atom:opls_157 $atom:opls_154
+    $bond:id6 @bond:type3 $atom:opls_157 $atom:opls_140_4
+    $bond:id7 @bond:type3 $atom:opls_157 $atom:opls_140_5
+    $bond:id8 @bond:type4 $atom:opls_154 $atom:opls_155
+  }
+
+  write("Data Angles") {
+    $angle:id1 @angle:type5 $atom:opls_135 $atom:opls_157 $atom:opls_154
+    $angle:id2 @angle:type4 $atom:opls_135 $atom:opls_157 $atom:opls_140_4
+    $angle:id3 @angle:type4 $atom:opls_135 $atom:opls_157 $atom:opls_140_5
+    $angle:id4 @angle:type2 $atom:opls_157 $atom:opls_135 $atom:opls_140_1
+    $angle:id5 @angle:type2 $atom:opls_157 $atom:opls_135 $atom:opls_140_2
+    $angle:id6 @angle:type2 $atom:opls_157 $atom:opls_135 $atom:opls_140_3
+    $angle:id7 @angle:type3 $atom:opls_157 $atom:opls_154 $atom:opls_155
+    $angle:id8 @angle:type7 $atom:opls_154 $atom:opls_157 $atom:opls_140_4
+    $angle:id9 @angle:type7 $atom:opls_154 $atom:opls_157 $atom:opls_140_5
+    $angle:id10 @angle:type1 $atom:opls_140_1 $atom:opls_135 $atom:opls_140_2
+    $angle:id11 @angle:type1 $atom:opls_140_1 $atom:opls_135 $atom:opls_140_3
+    $angle:id12 @angle:type1 $atom:opls_140_2 $atom:opls_135 $atom:opls_140_3
+    $angle:id13 @angle:type6 $atom:opls_140_4 $atom:opls_157 $atom:opls_140_5
+  }
+
+  write("Data Dihedrals") {
+    $dihedral:id1 @dihedral:type3 $atom:opls_135 $atom:opls_157 $atom:opls_154 $atom:opls_155
+    $dihedral:id2 @dihedral:type2 $atom:opls_154 $atom:opls_157 $atom:opls_135 $atom:opls_140_1
+    $dihedral:id3 @dihedral:type2 $atom:opls_154 $atom:opls_157 $atom:opls_135 $atom:opls_140_2
+    $dihedral:id4 @dihedral:type2 $atom:opls_154 $atom:opls_157 $atom:opls_135 $atom:opls_140_3
+    $dihedral:id5 @dihedral:type1 $atom:opls_140_1 $atom:opls_135 $atom:opls_157 $atom:opls_140_4
+    $dihedral:id6 @dihedral:type1 $atom:opls_140_1 $atom:opls_135 $atom:opls_157 $atom:opls_140_5
+    $dihedral:id7 @dihedral:type1 $atom:opls_140_2 $atom:opls_135 $atom:opls_157 $atom:opls_140_4
+    $dihedral:id8 @dihedral:type1 $atom:opls_140_2 $atom:opls_135 $atom:opls_157 $atom:opls_140_5
+    $dihedral:id9 @dihedral:type1 $atom:opls_140_3 $atom:opls_135 $atom:opls_157 $atom:opls_140_4
+    $dihedral:id10 @dihedral:type1 $atom:opls_140_3 $atom:opls_135 $atom:opls_157 $atom:opls_140_5
+    $dihedral:id11 @dihedral:type4 $atom:opls_140_4 $atom:opls_157 $atom:opls_154 $atom:opls_155
+    $dihedral:id12 @dihedral:type4 $atom:opls_140_5 $atom:opls_157 $atom:opls_154 $atom:opls_155
+  }
+
+} # end of "EtOH" type definition

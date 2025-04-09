@@ -1,0 +1,22 @@
+tolerance 2.0
+
+# The file type of input and output files is PDB
+filetype pdb
+
+# The name of the output file
+output system.pdb
+
+# The system components
+
+
+structure IRMOF-1.pdb
+  number 1
+  inside box 0. 0. 0. 40 40 40
+end structure
+            
+
+structure EtOH.pdb
+  number 20
+  inside box 0. 0. 0. 40 40 40
+end structure
+            

@@ -1,0 +1,60 @@
+import "gaff2.lt"
+
+
+DMF inherits GAFF2 {
+
+  #  atomId molId atomType charge X Y Z
+
+  write("Data Atoms"){
+    $atom:C1 $mol:m @atom:c3 0.0793 -0.873 -1.061 -0.079
+    $atom:N1 $mol:m @atom:n -0.4948 -0.053 0.133 -0.089
+    $atom:C2 $mol:m @atom:c3 0.0793 1.352 -0.006 0.243
+    $atom:C3 $mol:m @atom:c 0.6609 -0.612 1.386 -0.236
+    $atom:O1 $mol:m @atom:o -0.6041 -0.018 2.453 -0.153
+    $atom:H1 $mol:m @atom:h1 0.0417 -0.447 -1.792 -0.772
+    $atom:H2 $mol:m @atom:h1 0.0417 -1.9 -0.836 -0.38
+    $atom:H3 $mol:m @atom:h1 0.0417 -0.881 -1.475 0.933
+    $atom:H4 $mol:m @atom:h1 0.0417 1.435 -0.349 1.278
+    $atom:H5 $mol:m @atom:h1 0.0417 1.803 -0.745 -0.425
+    $atom:H6 $mol:m @atom:h1 0.0417 1.886 0.942 0.137
+    $atom:H7 $mol:m @atom:h5 0.0282 -1.692 1.349 -0.456
+  } # Atoms section
+
+  #  bondId  atomId1 atomId2
+
+  write("Data Bond List") {
+    $bond:b1  $atom:C1  $atom:N1
+    $bond:b2  $atom:C1  $atom:H1
+    $bond:b3  $atom:C1  $atom:H2
+    $bond:b4  $atom:C1  $atom:H3
+    $bond:b5  $atom:N1  $atom:C2
+    $bond:b6  $atom:N1  $atom:C3
+    $bond:b7  $atom:C2  $atom:H4
+    $bond:b8  $atom:C2  $atom:H5
+    $bond:b9  $atom:C2  $atom:H6
+    $bond:b10  $atom:C3  $atom:O1
+    $bond:b11  $atom:C3  $atom:H7
+  } # Bonds section
+
+}  # DMF
+
+
+
+
+
+
+# -------- INSTRUCTIONS FOR USING THIS FILE: --------
+# So far, we have just defined (one or more) molecular subunits.
+# If you want to use these molecule(s) in a simulation, you must instantiate
+# copies of them.  To do that you would the "new" command.  For example:
+#
+# DMF_instance = new DMF
+#
+# You could either put this command here, or in a separate file.
+# (...Such as "system.lt".  In that case remember to use moltemplate's
+#  "import" command to import this file beforehand because you must ensure
+#  that the molecules in this file are loaded before they are used.)
+#
+# Note: You can also modify the position and orientation of each copy
+# using the .move() and .rot() commands.  (See the moltemplate manual.)
+# ---------------------------------------------------
