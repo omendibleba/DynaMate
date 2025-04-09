@@ -30,3 +30,4 @@ openmm
 lark
 rdkit
 git+https://github.com/mosdef-hub/foyer.git
+lammps_interface
