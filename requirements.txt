@@ -5,3 +5,8 @@ numpy==1.25.0
 matplotlib
 pandas
 scipy
+langchain
+langchain-openai
+langchain-experimental
+langchainhub
+python-dotenv
