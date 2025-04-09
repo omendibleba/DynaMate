@@ -1,6 +1,7 @@
 # requirements.txt
 # Command: pip install -r requirements.txt --no-cache-dir
 
+### Main dependencies
 numpy==1.25.0
 matplotlib
 pandas
@@ -10,3 +11,22 @@ langchain-openai
 langchain-experimental
 langchainhub
 python-dotenv
+
+
+### Optional dependencies
+## Agent 1 (system_prep)
+git+https://github.com/mosdef-hub/mbuild.git@0.17.0
+ele
+networkx
+boltons
+treelib
+git+https://github.com/mosdef-hub/gmso.git
+unyt
+lxml
+symengine
+parmed
+importlib_resources
+openmm
+lark
+rdkit
+git+https://github.com/mosdef-hub/foyer.git
