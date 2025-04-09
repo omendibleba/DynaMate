@@ -1,0 +1,7 @@
+# requirements.txt
+# Command: pip install -r requirements.txt --no-cache-dir
+
+numpy==1.25.0
+matplotlib
+pandas
+scipy
