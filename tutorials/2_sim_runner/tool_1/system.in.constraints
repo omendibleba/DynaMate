@@ -1,0 +1,5 @@
+group spce type  1  2
+fix fRattleSPCE spce shake 0.0001 10 0 b 1 a 1
+# Remember to put this command in your LAMMPS input script:
+#  include system.in.constraints
+# ...after minimization and after all integration fixes

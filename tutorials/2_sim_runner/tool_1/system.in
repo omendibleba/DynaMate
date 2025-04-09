@@ -1,0 +1,51 @@
+
+# ----------------- Init Section -----------------
+include "system.in.init"
+              
+# ----------------- Atom Definition Section -----------------
+read_data "system.data"
+
+# ----------------- Settings Section -----------------
+include "system.in.settings"
+
+thermo 100
+#  -- minimize -- (Minimization without fix shake)
+minimize 1.0e-5 1.0e-7 1000 10000
+write_data system_minimized.data
+
+# ----------------- Constraints Section -----------------
+include "system.in.constraints"
+
+# ----------------- Run Section -----------------              
+# Setup timestep
+timestep        1 #fs
+
+reset_timestep 0
+# Define thermo output
+thermo          1000
+thermo_style    custom step time temp pe ke etotal enthalpy press lx vol density
+
+
+#Create initial velocity distribution
+velocity   all create 298.0 097865 dist gaussian
+
+## Fix commands
+fix 1 all npt temp 298.0 298.0 100 iso 1.0 1.0 1000.0
+run 10000 # 1 ns
+
+
+write_data system_npt_equil.data
+unfix 1
+
+fix 2 all nvt temp 298.0 298.0 100
+unfix 2
+
+# Define Dumping
+#dump 1 all xyz 1000 test.xyz
+dump 3 all dcd 1000 trajectory.dcd
+#dump myDump2 all custom 1000 forces.dump id type x y z fx fy fz
+
+run 5000 # 0.5 ns
+
+write_data system_nvt_equil.data
+

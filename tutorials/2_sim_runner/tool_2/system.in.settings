@@ -1,0 +1,8 @@
+bond_coeff   1         600.0   1.0 
+angle_coeff  1       75.0    109.47
+pair_coeff   1 1  0.1553  3.166 
+pair_coeff   2 2  0.0     0.0
+# Note: Since we are using RATTLE constraints, the bond and angle strength
+# parameters ("600.0", "75.0") do not matter. But the equilibrium bond
+# length ("1.0") and equilibrium angle ("109.47") does matter. LAMMPS
+# obtains these numbers from the bond_coeff and angle_coeff commands above.
