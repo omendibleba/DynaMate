@@ -31,3 +31,7 @@ lark
 rdkit
 git+https://github.com/mosdef-hub/foyer.git
 lammps_interface
+
+
+## Agent 3 (Post Analysis)
+MDAnalysis

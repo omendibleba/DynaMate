@@ -26,7 +26,7 @@ The requirements.txt file includes optional dependencies for the current agents 
 
 ## Tutorials 
 
-The tutorials folders include folders for each agent included in the workflow and within there are python notebooks with detailed description of the tools, how to used them, and what they do. Tihs is a good practice to mantain a "live documentation" of the multi-agent framework. As new tools and agetns are developed their instructions will be updated in these folders. 
+The tutorials folders include folders for each agent included in the workflow and within there are python notebooks with detailed description of the tools, how to used them, and what they do. Tihs is a good practice to mantain a "live documentation" of the multi-agent framework. As new tools and agents are developed their instructions will be updated in these folders. 
 
 <br>
 
@@ -34,9 +34,16 @@ The tutorials folders include folders for each agent included in the workflow an
 
 ### Agent 1: MD System Preparation 
 
-This agent has acces to MoSDEF, moltemplate, packmol and rdkit packages which are useful for preparing files required for MD simulations using LAMMPS. It can generate data files from SMILE strings and CIF files (using lammps_interface). By default it uses the GAFF forcefield file provided by Moltemplate but this can be modified in the source code of the file to use other available or custom force fields. The agent algo generates template files form provided data files and can use them to generate more com,plex systems. 
+This agent has acces to MoSDEF, moltemplate, packmol and rdkit packages which are useful for preparing files required for MD simulations using LAMMPS. It can generate data files from SMILE strings and CIF files (using lammps_interface). By default it uses the GAFF forcefield file provided by Moltemplate but this can be modified in the source code of the file to use other available or custom force fields. The agent algo generates template files form provided data files and can use them to generate more complex systems. 
 
 
 ### Agent 2: MD Simulation Runner
 
-This agents requires an available LAMMPS executable to run simulations with LAMMPS. Its tool can generate a provicional simulation file that runs an energy minimization, NPT and NVT simulations. THe type and length of the simulations can be modified in the source code of this agent's tools. If the simulation files are availablke the agent can read them to directly run the simulaiton. 
+This agents requires an available LAMMPS executable to run simulations with LAMMPS. Its tool can generate a provicional simulation file that runs an energy minimization, NPT and NVT simulations. The type and length of the simulations can be modified in the source code of this agent's tools. If the simulation files are availablke the agent can read them to directly run the simulaiton. 
+
+** Requires LAMMPS executable 
+
+### Agent 3: MD Post-Porcessing 
+
+Agent 3 has access to MDAnalysis to calculate various properties from molecular trajectories in the DCD format. Currently, it can obtain radial distribution functions (RDF) and meand square displacement (MSD), bt can be easily modified to obtain any property avilable in MDAnalysis. Additionallly, it has in-house tools developed to check the convergence of system confitions to accuratly identify the stability of the system. 
+
