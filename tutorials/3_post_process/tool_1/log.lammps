@@ -1,0 +1,165 @@
+LAMMPS (7 Feb 2024 - Update 1)
+  using 1 OpenMP thread(s) per MPI task
+
+# ----------------- Init Section -----------------
+include "system.in.init"
+# -- Default styles (for solo "SPCE" water) --
+units        real
+atom_style   full
+pair_style   lj/cut/coul/long 11.0 11.0
+bond_style   harmonic
+angle_style  harmonic
+kspace_style pppm 0.00001
+#pair_modify  mix arithmetic  # LEAVE THIS UNSPECIFIED!
+
+# ----------------- Atom Definition Section -----------------
+read_data "system_npt_equil.data"
+Reading data file ...
+  orthogonal box = (1.8370172 1.8370172 1.8370172) to (28.162983 28.162983 28.162983)
+  1 by 2 by 2 MPI processor grid
+  reading atoms ...
+  1800 atoms
+  reading velocities ...
+  1800 velocities
+  scanning bonds ...
+  2 = max bonds/atom
+  scanning angles ...
+  1 = max angles/atom
+  reading bonds ...
+  1200 bonds
+  reading angles ...
+  600 angles
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        0        0       
+  special bond factors coul:  0        0        0       
+     2 = max # of 1-2 neighbors
+     1 = max # of 1-3 neighbors
+     1 = max # of 1-4 neighbors
+     2 = max # of special neighbors
+  special bonds CPU = 0.001 seconds
+  read_data CPU = 0.069 seconds
+
+# ----------------- Settings Section -----------------
+include "system.in.settings"
+bond_coeff   1         600.0   1.0
+angle_coeff  1       75.0    109.47
+pair_coeff   1 1  0.1553  3.166
+pair_coeff   2 2  0.0     0.0
+# Note: Since we are using RATTLE constraints, the bond and angle strength
+# parameters ("600.0", "75.0") do not matter. But the equilibrium bond
+# length ("1.0") and equilibrium angle ("109.47") does matter. LAMMPS
+# obtains these numbers from the bond_coeff and angle_coeff commands above.
+
+thermo 100
+#  -- minimize -- (Minimization without fix shake)
+
+# ----------------- Constraints Section -----------------
+include "system.in.constraints"
+group spce type  1  2
+1800 atoms in group spce
+fix fRattleSPCE spce shake 0.0001 10 0 b 1 a 1
+Finding SHAKE clusters ...
+       0 = # of size 2 clusters
+       0 = # of size 3 clusters
+       0 = # of size 4 clusters
+     600 = # of frozen angles
+  find clusters CPU = 0.001 seconds
+# Remember to put this command in your LAMMPS input script:
+#  include system.in.constraints
+# ...after minimization and after all integration fixes
+
+# ----------------- Run Section -----------------
+# Setup timestep
+timestep        1 #fs
+
+reset_timestep 0
+# Define thermo output
+thermo          1000
+thermo_style    custom step time temp pe ke etotal enthalpy press lx vol density
+
+
+#Create initial velocity distribution
+velocity   all create 298.0 097865 dist gaussian
+
+## Fix commands
+
+
+fix 2 all nvt temp 298.0 298.0 100
+
+# Define Dumping
+#dump 1 all xyz 1000 test.xyz
+dump 3 all dcd 1000 trajectory.dcd
+#dump myDump2 all custom 1000 forces.dump id type x y z fx fy fz
+
+run 2000 # 2 ns
+PPPM initialization ...
+  using 12-bit tables for long-range coulomb (src/lammps-7Feb2024/src/kspace.cpp:342)
+  G vector (1/distance) = 0.27460408
+  grid = 20 20 20
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.0034816668
+  estimated relative force accuracy = 1.0484936e-05
+  using double precision MKL FFT
+  3d grid and FFT values/proc = 7803 2000
+Generated 1 of 1 mixed pair_coeff terms from geometric mixing rule
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 13
+  ghost atom cutoff = 13
+  binsize = 6.5, bins = 5 5 5
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair lj/cut/coul/long, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton
+      stencil: half/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 9.706 | 9.708 | 9.71 Mbytes
+   Step          Time           Temp          PotEng         KinEng         TotEng        Enthalpy        Press            Lx           Volume        Density    
+         0   0              298           -6686.2103      1065.0494     -5621.1609     -5140.2764      1807.2239      26.325966      18245.381      0.98376482   
+      1000   1000           291.63703     -6704.1822      1042.3082     -5661.8741     -5818.3087     -587.90088      26.325966      18245.381      0.98376482   
+      2000   2000           296.37424     -6712.5652      1059.2389     -5653.3262     -5698.3466     -169.19198      26.325966      18245.381      0.98376482   
+Loop time of 9.77757 on 4 procs for 2000 steps with 1800 atoms
+
+Performance: 17.673 ns/day, 1.358 hours/ns, 204.550 timesteps/s, 368.190 katom-step/s
+99.0% CPU use with 4 MPI tasks x 1 OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 7.4218     | 7.476      | 7.5701     |   2.1 | 76.46
+Bond    | 0.00041391 | 0.00048139 | 0.00054074 |   0.0 |  0.00
+Kspace  | 1.2492     | 1.3416     | 1.3935     |   4.8 | 13.72
+Neigh   | 0.46788    | 0.468      | 0.46809    |   0.0 |  4.79
+Comm    | 0.24384    | 0.24648    | 0.24965    |   0.4 |  2.52
+Output  | 0.00029951 | 0.00034232 | 0.00042085 |   0.0 |  0.00
+Modify  | 0.22225    | 0.22291    | 0.22345    |   0.1 |  2.28
+Other   |            | 0.02168    |            |       |  0.22
+
+Nlocal:            450 ave         458 max         440 min
+Histogram: 1 0 0 0 0 0 2 0 0 1
+Nghost:           7464 ave        7517 max        7411 min
+Histogram: 1 0 0 0 1 1 0 0 0 1
+Neighs:         203984 ave      207261 max      197069 min
+Histogram: 1 0 0 0 0 0 0 1 0 2
+
+Total # of neighbors = 815938
+Ave neighs/atom = 453.29889
+Ave special neighs/atom = 2
+Neighbor list builds = 86
+Dangerous builds = 0
+
+write_data system_nvt_equil.data
+System init for write_data ...
+PPPM initialization ...
+  using 12-bit tables for long-range coulomb (src/lammps-7Feb2024/src/kspace.cpp:342)
+  G vector (1/distance) = 0.27460408
+  grid = 20 20 20
+  stencil order = 5
+  estimated absolute RMS force accuracy = 0.0034816668
+  estimated relative force accuracy = 1.0484936e-05
+  using double precision MKL FFT
+  3d grid and FFT values/proc = 7803 2000
+Generated 1 of 1 mixed pair_coeff terms from geometric mixing rule
+
+Total wall time: 0:00:09
