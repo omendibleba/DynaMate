@@ -61,3 +61,13 @@ RAG, or Retrieval-Augmented Generation, is a machine learning framework that com
 - Generation: Once the relevant information is retrieved, an LLM uses this data to generate accurate and context-aware responses.
 
 This framework is particularly effective in scenarios where grounded and factually accurate responses are essential, such as in scientific research, customer support, or knowledge-heavy domains.
+
+
+
+## Framework Template 
+
+A template of for customizables agents is included in the template folder. It includes the three main sections that enable the conection of agents and tools: Class (for inputs), function (main code), and Stuctured tool (combining class and function). For customization, the only changes necessary are the modification of inputs in the class and the python function to achieve the goal of interest. 
+
+All the tools developed for this project were generated using this template. The connection between agents and the scheduler also uses the template, but instead of the agent having functions as tools, it has the other agents as tools. The main modifications required to modiffy the framework for custom workflows would be focosed on the class of inputs and the functions.
+
+
