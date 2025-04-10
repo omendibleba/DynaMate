@@ -40,3 +40,8 @@ MDAnalysis
 ## Agent 4 (Enhanced Sampling)
 plumed
 natsort
+
+
+## Agent 5 (RAG)
+pymupdf
+faiss-gpu

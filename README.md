@@ -47,3 +47,17 @@ This agents requires an available LAMMPS executable to run simulations with LAMM
 
 Agent 3 has access to MDAnalysis to calculate various properties from molecular trajectories in the DCD format. Currently, it can obtain radial distribution functions (RDF) and meand square displacement (MSD), bt can be easily modified to obtain any property avilable in MDAnalysis. Additionallly, it has in-house tools developed to check the convergence of system confitions to accuratly identify the stability of the system. 
 
+** Requires LAMMPS executable compiled with PLUMED
+
+### Agent 4: Enhanced Sampling MD
+
+Agent 4 has built-in tools that write custom input files for enhanced sampling simulations, and to analyze output files. Currently, metadynamics and umbrella sampling are used. Input files can be modified in the source code of this agent. 
+
+
+### Agent 5: Retrival-Augmented Generation (RAG)
+
+RAG, or Retrieval-Augmented Generation, is a machine learning framework that combines generative AI models with retrieval-based techniques. Here's a concise breakdown:
+- Retrieval: RAG incorporates a search or retrieval step where relevant documents or data are fetched from an external knowledge base. This step ensures that the generative AI has access to up-to-date and domain-specific knowledge.
+- Generation: Once the relevant information is retrieved, an LLM uses this data to generate accurate and context-aware responses.
+
+This framework is particularly effective in scenarios where grounded and factually accurate responses are essential, such as in scientific research, customer support, or knowledge-heavy domains.
