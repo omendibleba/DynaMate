@@ -35,3 +35,8 @@ lammps_interface
 
 ## Agent 3 (Post Analysis)
 MDAnalysis
+
+
+## Agent 4 (Enhanced Sampling)
+plumed
+natsort
