@@ -68,6 +68,9 @@ This framework is particularly effective in scenarios where grounded and factual
 
 A template of for customizables agents is included in the template folder. It includes the three main sections that enable the conection of agents and tools: Class (for inputs), function (main code), and Stuctured tool (combining class and function). For customization, the only changes necessary are the modification of inputs in the class and the python function to achieve the goal of interest. 
 
-All the tools developed for this project were generated using this template. The connection between agents and the scheduler also uses the template, but instead of the agent having functions as tools, it has the other agents as tools. The main modifications required to modiffy the framework for custom workflows would be focosed on the class of inputs and the functions.
+All the tools developed for this project were generated using this template. The connection between agents and the scheduler also uses the template, but instead of the agent having functions as tools, it has the other agents as tools. The main modifications required to modify the framework for custom workflows would be focused on the class of inputs and the functions.
 
+### Community Agents Framework 
+
+Users of DynaMate are encourage to become part of the team and share tools and workflows developr for any application. The objective is to have a library of tools that other users can used to enhanced their multi-agent frameworks. Additionally, this tools will be assigned to an agent with the objective to build a robust and inter disiplinary agent.
 
