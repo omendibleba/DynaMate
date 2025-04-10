@@ -1,0 +1,31 @@
+
+units			real
+
+neigh_modify    once yes  one  22 page 2200  
+
+atom_style	full
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  harmonic
+pair_style      lj/cut/coul/cut 12.0
+pair_modify     mix arithmetic
+
+kspace_style    none 
+read_data       example.input   
+timestep        1.0
+
+velocity all create 300 3
+
+thermo 1000
+thermo_style custom time step etotal ke pe temp press vol
+
+
+fix umb all plumed plumedfile plumed_MetaD.dat outfile plumed.out
+fix             1 all nvt temp 300 300 100.0
+fix             2 all shake 0.0001 10 0 b 3 5 7 
+
+#dump myDump all custom 1000 forces.dump id type x y z fx fy fz
+dump mydumpxyz all xyz 1000 traj_nnip.xyz
+special_bonds   amber                               
+ 
+run 5000000

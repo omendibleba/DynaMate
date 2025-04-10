@@ -1,0 +1,52 @@
+PLUMED: PLUMED is starting
+PLUMED: Version: 2.8.3 (git: Unknown) compiled on Feb 28 2024 at 19:10:20
+PLUMED: Please cite these papers when using PLUMED [1][2]
+PLUMED: For further information see the PLUMED web page at http://www.plumed.org
+PLUMED: Root: /opt/crc/l/lammps/src/lammps-7Feb2024/build_cpu/plumed_build-prefix/lib/plumed
+PLUMED: For installed feature, see /opt/crc/l/lammps/src/lammps-7Feb2024/build_cpu/plumed_build-prefix/lib/plumed/src/config/config.txt
+PLUMED: Molecular dynamics engine: LAMMPS
+PLUMED: Precision of reals: 8
+PLUMED: Running over 12 nodes
+PLUMED: Number of threads: 1
+PLUMED: Cache line size: 512
+PLUMED: Number of atoms: 320
+PLUMED: File suffix: 
+PLUMED: FILE: plumed_1.dat
+PLUMED: Action DISTANCE
+PLUMED:   with label d1
+PLUMED:   between atoms 319 320
+PLUMED:   using periodic boundary conditions
+PLUMED: Action RESTRAINT
+PLUMED:   with label bb
+PLUMED:   with arguments d1
+PLUMED:   added component to this action:  bb.bias 
+PLUMED:   at 0.266667
+PLUMED:   with harmonic force constant 500.000000
+PLUMED:   and linear force constant 0.000000
+PLUMED:   added component to this action:  bb.force2 
+PLUMED: Action REWEIGHT_BIAS
+PLUMED:   with label lw
+PLUMED:   with arguments bb.bias
+PLUMED: Action PRINT
+PLUMED:   with label @3
+PLUMED:   with stride 1000
+PLUMED:   with arguments d1 bb.bias bb.force2 lw
+PLUMED:   on file dihedral_1.dat
+PLUMED:   with format  %f
+PLUMED: END FILE: plumed_1.dat
+PLUMED: Timestep: 0.002000
+PLUMED: KbT has not been set by the MD engine
+PLUMED: It should be set by hand where needed
+PLUMED: Relevant bibliography:
+PLUMED:   [1] The PLUMED consortium, Nat. Methods 16, 670 (2019)
+PLUMED:   [2] Tribello, Bonomi, Branduardi, Camilloni, and Bussi, Comput. Phys. Commun. 185, 604 (2014)
+PLUMED: Please read and cite where appropriate!
+PLUMED: Finished setup
+PLUMED:                                               Cycles        Total      Average      Minimum      Maximum
+PLUMED:                                                    1    28.930836    28.930836    28.930836    28.930836
+PLUMED: 1 Prepare dependencies                       1000001     0.331752     0.000000     0.000000     0.000033
+PLUMED: 2 Sharing data                               1000001    17.215922     0.000017     0.000013     0.006720
+PLUMED: 3 Waiting for data                           1000001     3.587763     0.000004     0.000002     0.008830
+PLUMED: 4 Calculating (forward loop)                 1000001     2.671485     0.000003     0.000002     0.000195
+PLUMED: 5 Applying (backward loop)                   1000001     1.321701     0.000001     0.000001     0.000022
+PLUMED: 6 Update                                     1000001     0.096209     0.000000     0.000000     0.000057

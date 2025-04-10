@@ -1,0 +1,66 @@
+PLUMED: PLUMED is starting
+PLUMED: Version: 2.8.3 (git: Unknown) compiled on Feb 28 2024 at 19:10:20
+PLUMED: Please cite these papers when using PLUMED [1][2]
+PLUMED: For further information see the PLUMED web page at http://www.plumed.org
+PLUMED: Root: /opt/crc/l/lammps/src/lammps-7Feb2024/build_cpu/plumed_build-prefix/lib/plumed
+PLUMED: For installed feature, see /opt/crc/l/lammps/src/lammps-7Feb2024/build_cpu/plumed_build-prefix/lib/plumed/src/config/config.txt
+PLUMED: Molecular dynamics engine: LAMMPS
+PLUMED: Precision of reals: 8
+PLUMED: Running over 1 node
+PLUMED: Number of threads: 1
+PLUMED: Cache line size: 512
+PLUMED: Number of atoms: 22
+PLUMED: File suffix: 
+PLUMED: FILE: plumed_MetaD.dat
+PLUMED: Action TORSION
+PLUMED:   with label cv1
+PLUMED:   between atoms 5 7 9 15
+PLUMED:   using periodic boundary conditions
+PLUMED: Action TORSION
+PLUMED:   with label cv2
+PLUMED:   between atoms 7 9 15 17
+PLUMED:   using periodic boundary conditions
+PLUMED: Action METAD
+PLUMED:   with label metad
+PLUMED:   with arguments cv1 cv2
+PLUMED:   added component to this action:  metad.bias 
+PLUMED:   Gaussian width  0.300000 0.300000  Gaussian height 1.000000
+PLUMED:   Gaussian deposition pace 100
+PLUMED:   Gaussian file HILLS
+PLUMED:   Well-Tempered Bias Factor 4.000000
+PLUMED:   Hills relaxation time (tau) 0.748302
+PLUMED:   KbT 2.494339
+PLUMED:   Grid min -pi -pi
+PLUMED:   Grid max pi pi
+PLUMED:   Grid bin 100 100
+PLUMED:   Grid uses spline interpolation
+PLUMED:   added component to this action:  metad.rbias 
+PLUMED:   added component to this action:  metad.rct 
+PLUMED:   The c(t) reweighting factor will be calculated every 1 hills
+PLUMED:   Bibliography [3][4][5]
+PLUMED: Action PRINT
+PLUMED:   with label @3
+PLUMED:   with stride 100
+PLUMED:   with arguments cv1 cv2 metad.bias metad.rbias metad.rct
+PLUMED:   on file colvar.dat
+PLUMED:   with format  %f
+PLUMED: END FILE: plumed_MetaD.dat
+PLUMED: Timestep: 0.001000
+PLUMED: KbT has not been set by the MD engine
+PLUMED: It should be set by hand where needed
+PLUMED: Relevant bibliography:
+PLUMED:   [1] The PLUMED consortium, Nat. Methods 16, 670 (2019)
+PLUMED:   [2] Tribello, Bonomi, Branduardi, Camilloni, and Bussi, Comput. Phys. Commun. 185, 604 (2014)
+PLUMED:   [3] Laio and Parrinello, PNAS 99, 12562 (2002)
+PLUMED:   [4] Barducci, Bussi, and Parrinello, Phys. Rev. Lett. 100, 020603 (2008)
+PLUMED:   [5] Pratyush and Parrinello, J. Phys. Chem. B, 119, 736 (2015)
+PLUMED: Please read and cite where appropriate!
+PLUMED: Finished setup
+PLUMED:                                               Cycles        Total      Average      Minimum      Maximum
+PLUMED:                                                    1   958.088617   958.088617   958.088617   958.088617
+PLUMED: 1 Prepare dependencies                      20000001     7.219501     0.000000     0.000000     0.000025
+PLUMED: 2 Sharing data                              20000001   319.331848     0.000016     0.000013     0.001016
+PLUMED: 3 Waiting for data                          20000001   205.525865     0.000010     0.000010     0.000160
+PLUMED: 4 Calculating (forward loop)                20000001   164.906813     0.000008     0.000007     0.001050
+PLUMED: 5 Applying (backward loop)                  20000001    59.092704     0.000003     0.000003     0.000346
+PLUMED: 6 Update                                    20000001    98.288553     0.000005     0.000000    10.630808

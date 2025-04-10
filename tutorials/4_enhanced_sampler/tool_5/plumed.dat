@@ -1,0 +1,21 @@
+
+
+phi: TORSION ATOMS=5,7,9,15      #  Values of pshi are correc compareed to the pdb
+psi: TORSION ATOMS=7,9,15,17      # V
+
+# Activate well-tempered metadynamics in phi
+metad: METAD ARG=phi,psi ...
+   # Deposit a Gaussian every 500 time steps, with initial height
+   # equal to 0.3 kJ/mol and bias factor equal to 5
+   PACE=100 HEIGHT=1.0 BIASFACTOR=4
+   # Gaussian width (sigma) should be chosen based on the CV fluctuations in unbiased run
+   SIGMA=0.3,0.3
+   TEMP=300
+   CALC_RCT
+   # Gaussians will be written to file and also stored on grid
+   FILE=HILLS GRID_MIN=-pi,-pi GRID_MAX=pi,pi GRID_BIN=100,100
+...
+
+PRINT ARG=phi,psi,metad.* FILE=colvar.dat STRIDE=100 # use this command to write phi and psi on a file named colvar.dat, every 100 steps
+
+

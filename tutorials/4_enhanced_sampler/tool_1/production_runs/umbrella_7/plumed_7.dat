@@ -1,0 +1,10 @@
+
+# vim:ft=plumed
+
+d1:  DISTANCE ATOMS=319,320
+
+bb: RESTRAINT ARG=d1 KAPPA=500.0 AT=0.9666666666666667
+lw: REWEIGHT_BIAS TEMP=300                
+                  
+# Print everything every 1000 steps.
+PRINT ARG=* STRIDE=1000 FILE=dihedral_7.dat
