@@ -10,7 +10,7 @@ REF
 
 <br>
 
-## Installation 
+# Installation 
 
 The creation of a new conda enviroment is recommended, and the requirements.txt file can be used to install the main packages and libraries that enable the usage of the template. Use the following commands.
 
@@ -21,6 +21,10 @@ The requirements.txt file includes optional dependencies for the current agents 
 `pip install -r requirements.txt --no-cache-dir`
 
 *** After installition, is recommended to run the ./tutorials/0_chatbot_vs_agent.ipynb notebook to ensure importatnt dependecies were successfully installed. 
+
+Optionally, add the path of the folder to your .basrh script to execute the chatbot.sh script from anywhere in the terminal. Make sure to make all the files in the terminal_bot folder executable by running the command below.
+
+`chmod +x ./chatbot/*`
 
 <br>
 
