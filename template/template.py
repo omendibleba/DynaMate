@@ -52,7 +52,8 @@ HelloWorld_Tool = StructuredTool.from_function(
 
 
 ## Define LLM
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.0)
+# llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0.0)
+llm = ChatOpenAI(model="gpt-4o", temperature=0.0)
 
 # Define list of tools the LLM is going to use 
 tools = [HelloWorld_Tool]
