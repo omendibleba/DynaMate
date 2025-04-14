@@ -6,18 +6,18 @@ DMF inherits GAFF2 {
   #  atomId molId atomType charge X Y Z
 
   write("Data Atoms"){
-    $atom:C1 $mol:m @atom:c3 0.0793 -0.873 -1.061 -0.079
-    $atom:N1 $mol:m @atom:n -0.4948 -0.053 0.133 -0.089
-    $atom:C2 $mol:m @atom:c3 0.0793 1.352 -0.006 0.243
-    $atom:C3 $mol:m @atom:c 0.6609 -0.612 1.386 -0.236
-    $atom:O1 $mol:m @atom:o -0.6041 -0.018 2.453 -0.153
-    $atom:H1 $mol:m @atom:h1 0.0417 -0.447 -1.792 -0.772
-    $atom:H2 $mol:m @atom:h1 0.0417 -1.9 -0.836 -0.38
-    $atom:H3 $mol:m @atom:h1 0.0417 -0.881 -1.475 0.933
-    $atom:H4 $mol:m @atom:h1 0.0417 1.435 -0.349 1.278
-    $atom:H5 $mol:m @atom:h1 0.0417 1.803 -0.745 -0.425
-    $atom:H6 $mol:m @atom:h1 0.0417 1.886 0.942 0.137
-    $atom:H7 $mol:m @atom:h5 0.0282 -1.692 1.349 -0.456
+    $atom:C1 $mol:m @atom:c3 0.0793 1.279 -0.259 -0.427
+    $atom:N1 $mol:m @atom:n -0.4948 -0.009 0.111 0.127
+    $atom:C2 $mol:m @atom:c3 0.0793 -1.118 -0.799 -0.072
+    $atom:C3 $mol:m @atom:c 0.6609 -0.198 1.365 0.67
+    $atom:O1 $mol:m @atom:o -0.6041 0.653 2.238 0.78
+    $atom:H1 $mol:m @atom:h1 0.0417 1.562 -1.243 -0.044
+    $atom:H2 $mol:m @atom:h1 0.0417 1.193 -0.301 -1.517
+    $atom:H3 $mol:m @atom:h1 0.0417 2.055 0.464 -0.16
+    $atom:H4 $mol:m @atom:h1 0.0417 -2.022 -0.431 0.421
+    $atom:H5 $mol:m @atom:h1 0.0417 -0.856 -1.777 0.342
+    $atom:H6 $mol:m @atom:h1 0.0417 -1.31 -0.892 -1.145
+    $atom:H7 $mol:m @atom:h5 0.0282 -1.229 1.525 1.025
   } # Atoms section
 
   #  bondId  atomId1 atomId2

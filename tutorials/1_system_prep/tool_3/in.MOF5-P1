@@ -1,4 +1,4 @@
-log             log.IRMOF-1 append
+log             log.MOF5-P1 append
 units           real
 atom_style      full
 boundary        p p p
@@ -10,10 +10,10 @@ dihedral_style  harmonic
 improper_style  fourier
 
 dielectric      1.0
-pair_modify     tail yes mix arithmetic
 special_bonds   lj/coul 0.0 0.0 1.0
+pair_modify     tail yes mix arithmetic
 box tilt        large
-read_data       data.IRMOF-1
+read_data       data.MOF5-P1
 
 #### Atom Groupings ####
 group           fram     id   1:424

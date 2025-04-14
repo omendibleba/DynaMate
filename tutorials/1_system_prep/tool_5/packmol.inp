@@ -11,12 +11,12 @@ output system.pdb
 
 structure IRMOF-1.pdb
   number 1
-  inside box 0. 0. 0. 40 40 40
+  inside box 0. 0. 0. 25 25 25
 end structure
             
 
 structure EtOH.pdb
   number 20
-  inside box 0. 0. 0. 40 40 40
+  inside box 0. 0. 0. 25 25 25
 end structure
             

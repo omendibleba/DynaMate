@@ -10,8 +10,8 @@ molec_2 = new EtOH[20] #.move(0,0,15.5171)
 
 ## Create the box. The box size is in Angstrom
 write_once("Data Boundary") {
-   0.0  40  xlo xhi
-   0.0  40  ylo yhi
-   0.0  40  zlo zhi
+   0.0  25  xlo xhi
+   0.0  25  ylo yhi
+   0.0  25  zlo zhi
 }
 
