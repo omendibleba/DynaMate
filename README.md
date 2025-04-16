@@ -78,3 +78,69 @@ All the tools developed for this project were generated using this template. The
 
 Users of DynaMate are encourage to become part of the team and share tools and workflows developr for any application. The objective is to have a library of tools that other users can used to enhanced their multi-agent frameworks. Additionally, this tools will be assigned to an agent with the objective to build a robust and inter disiplinary agent.
 
+
+# Dockerization
+
+If you enjoy the command line way of doing things you may want to setup a docker
+container to run the chatbot. Here we provide the basic commands to get you started.
+First you will need to build the container image for the chatbot app. After that you
+you will be able to execute it.
+
+## Installing Docker
+
+Installing Docker in GNU/Linux is straightforward provided that it is officially
+maintained by your Linux distribution, for example in Ubuntu and its derivatives you can
+install docker this way:
+
+```sh
+sudo apt install docker
+```
+
+If you wish to use docker as a regular user you will need to perform two additional steps.
+
+Create the group `docker`:
+
+```sh
+sudo groupadd docker
+```
+
+and add your user to that group:
+
+```sh
+sudo usermod -aG docker $USER
+```
+
+You are encouraged to consult the official docker documentation for
+[installing](https://docs.docker.com/engine/install/) docker in other operative systems.
+
+## Container Building
+
+To build the container for the chatbot app use the following command:
+
+```sh
+docker build --tag chatbot-im --network host .
+```
+
+This might take a while the first time so prepare some coffee while you wait.
+
+## Container Running
+
+The following command will execute the container:
+
+```sh
+docker container run --rm -it --network host --name chatbot chatbot-im
+```
+
+what you will get is an interactive shell session, you will notice that all the required
+files of this repository will be hosted under the `/app` directory.
+
+You may use the text-editor `vim` to modify the python scripts and notebooks therein if
+you wish.
+
+The following command will allow you to execute the python-notebooks:
+
+```sh
+ipython notebook.ipynb
+```
+
+where `notebook.ipynb` stands for any python-notebook.
