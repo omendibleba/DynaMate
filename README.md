@@ -6,7 +6,8 @@ DynaMate is a template that provides a modular and flexible codebase for develop
 The Multi-Agent framework was tested in the context of molecular dynamics (MD), but the given its modularity it can be easily modified for cstom worksflows that can be controlled with python functions. For this reason, the template can be used for applications in catalysis, drug delivery, colloidal systems, management of scintific equipment, etc. 
 
 Additional details can be found this publication:
-REF
+
+https://pubs.rsc.org/en/content/articlehtml/2025/me/d5me00062a
 
 <br>
 
